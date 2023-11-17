@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  api:
+    container_name: api
+    restart: on-failure
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db_service
+    volumes:
+      - .:/usr/src
+
+  db_service:
+    container_name: postgresql
+    image: postgres
+    ports:
+      - "5432:${DB_PORT}"
+    volumes:
+      - data:/data/db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+
+volumes:
+  data: {}
