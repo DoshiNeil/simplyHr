@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model person {
+  firstName     String        @db.VarChar(200)
+  lastName      String        @db.VarChar(200)
+  middleName    String        @db.VarChar(300)
+  salutation    Salutation
+  dateOfBirth   DateTime      @db.Date
+  maritalStatus MaritalStatus
+  gender        Gender
+  person_id     String        @id @db.VarChar(100)
+}
+
+enum Salutation {
+  Mr
+  Mrs
+  Ms
+  Dr
+}
+
+enum MaritalStatus {
+  Married
+  UnMarried
+  Divorced
+  Widow
+  Widower
+}
+
+enum Gender {
+  Male
+  Female
+  Transgender
+}
