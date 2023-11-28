@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -9,9 +10,11 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -25,13 +28,19 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@public/*": [
+        "public/*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
+    "additional.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
     ".next/types/**/*.ts"
   ],
   "exclude": [
